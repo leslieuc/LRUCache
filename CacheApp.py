@@ -30,11 +30,11 @@ def put_value(key):
     if 'value' in request.json and type(request.json['value']) != int:
         abort(400)
     value = request.json.get('value')
-    print("we got",key,value)
+    #print("we got",key,value)
     ret = cache.put(key,value)
     if ret is None:
         return make_response(jsonify({}),202)
-    else:
+    else: #return the old item got replaced
         return make_response(jsonify({'key':ret[0], 'value': ret[1]}),202)
 
 @app.errorhandler(404)
