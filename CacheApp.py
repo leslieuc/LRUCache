@@ -34,7 +34,7 @@ def put_value(key):
     ret = cache.put(key,value)
     if ret is None:
         return make_response(jsonify({}),202)
-    else: #return the old item got replaced
+    else:
         return make_response(jsonify({'key':ret[0], 'value': ret[1]}),202)
 
 @app.errorhandler(404)
