@@ -21,7 +21,10 @@ class LRUCache:
             self.store.pop(key)
         self.store[key] = value
         if len(self.store) > self.capacity:
-            self.store.popitem(last = False)
+            rk,rv=self.store.popitem(last = False)
+            #print(rk,rv)
+            return (rk,rv)
+        return None
     def clear(self) -> None:
         self.store.clear()
             
